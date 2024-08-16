@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ProductListComponent from "./ProductListComponent";
 
 function GetProductsComponent() {
     const [products, setProducts] = useState(null);
+    const [cartItems, setCartItems] = useState([]);
 
     useState(() => {
         fetch('http://localhost:4000/products')
@@ -13,11 +14,19 @@ function GetProductsComponent() {
             })
     }, []);
 
-  return (
-      <div className="row">
-          {products && <ProductListComponent products={products} />}
-      </div>
-  );
+
+
+    function addToCart(id) {
+        const cartItem = products.filter(item => item.id == id);
+        console.log("added to cart");
+        setCartItems([...cartItems, cartItem]);
+    }
+
+    return (
+        <div className="row">
+            {products && <ProductListComponent products={products} addToCartHandler={addToCart}/>}
+        </div>
+    );
 }
 
 export default GetProductsComponent;

@@ -2,31 +2,29 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 import NavBarComponent from './components/NavBarComponent'
 import { Route, Routes } from 'react-router-dom';
-import ProductListComponent from './components/ProductListComponent';
+import CartComponent from './components/CartComponent';
 import NotFoundComponent from './components/NotFoundComponent';
+import GetProductsComponent from './components/GetProductsComponent';
+import IntroComponent from './components/IntroComponent';
 
 function App() {
 
     return (
-    <NavBarComponent>
-      <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Learn React</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-          </div>
+        <div>
+            <NavBarComponent />
 
-          <Routes>
-              <Route path='/' element={<ProductListComponent />} />
-              <Route path="*" element={<NotFoundComponent />} />
-          </Routes>
-    </NavBarComponent>
-  )
+            <div className="container">
+                <p className="h4">&nbsp;</p>
+
+            <Routes>
+                <Route path="/" element={<IntroComponent />} />
+                <Route path="/products" element={<GetProductsComponent />} />
+                    <Route path="/cart" element={<CartComponent />} />
+                <Route path="/*" element={<NotFoundComponent />} />
+            </Routes>
+            </div>
+        </div>
+    )
 }
 
 export default App

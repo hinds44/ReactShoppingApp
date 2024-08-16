@@ -1,0 +1,11 @@
+.not-stock{
+    color: red;
+}
+
+.in-stock {
+    color: green;
+}
+
+.card {
+    min-height: 15rem;
+}
